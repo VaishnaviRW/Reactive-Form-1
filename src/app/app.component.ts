@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { EmailValidator, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomRegex } from './const/validatersPattern';
-import { empIdValidator } from './validaters/validaters';
+import { empIdValidator } from './validators/validators';
 import { COUNTRIES_META_DATA } from './const/country';
 import { Icountry } from './models/country';
-import { emailIdValidator } from './validaters/emailIdValidater';
+import { emailIdValidator } from './validators/emailIdValidator';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +32,7 @@ export class AppComponent {
 
   confirmPasswordErrorHandler(){
       this.f['confirmPassword'].valueChanges
-    .subscribe( confirmPassVal => {
+    .subscribe( (confirmPassVal: any) => {
       let passVal = this.f['password'].value
       if(passVal === confirmPassVal){
         this.f['confirmPassword'].setErrors(null)
@@ -45,21 +45,21 @@ export class AppComponent {
   }
 
   userDetails = {
-    userName: "BhushanV",
-    email: "bhushanvarude777@gmail.com",
-    empId: "B888",
-    gender: "Male",
+    userName: "Vaishnavi W",
+    email: "Vaishnavi23@gmail.com",
+    empId: "A123",
+    gender: "Feale",
     currentAddress: {
         country: "India",
         state: "Maharashtra",
-        city: "Pune",
-        pincode: "411030"
+        city: "Latur",
+        pincode: "413512"
     },
     permanentAddress: {
         country: "India",
         state: "Maharashtra",
-        city: "Pune",
-        pincode: "411030"
+        city: "Latur",
+        pincode: "413512"
     },
     isAddSame: true,
     skills: [
@@ -69,25 +69,25 @@ export class AppComponent {
     ],
     dependents: [
         {
-            fullName: "Bhushan Varude",
+            fullName: "Vaishnavi Wadgaokar",
             citizenship: "India",
-            relationship: "friend",
+            relationship: "Sister",
             isTravellingWithYou: true
         },
          {
-            fullName: "Uday Indrawar",
+            fullName: "Vaibhavi Wadgaonkar",
             citizenship: "India",
-            relationship: "friend",
+            relationship: "Sister",
             isTravellingWithYou: true
         }
     ],
-    password: "As@3jjjj",
-    confirmPassword: "As@3jjjj"
+    password: "S@ke4uuuu",
+    confirmPassword: "S@ke4uuuu"
 }
 
   setConfirmPasswordState(){
      this.f['password'].valueChanges
-    .subscribe( val => {
+    .subscribe( (val: any) => {
       if(this.f['password'].valid){
         this.f['confirmPassword'].enable()
       }else{
@@ -99,7 +99,7 @@ export class AppComponent {
 
   isAddSameHandler() {
     this.f['currentAddress'].valueChanges
-      .subscribe(res => {
+      .subscribe((res: any) => {
         if (this.f['currentAddress'].valid) {
           this.f['isAddSame'].enable()
         } else {
@@ -111,7 +111,7 @@ export class AppComponent {
 
   permanentAddressHandler(){
      this.f['isAddSame'].valueChanges
-      .subscribe(val => {
+      .subscribe((val: any) => {
         if (val) {
           let currAdd = this.f['currentAddress'].value
           this.f['permanentAddress'].patchValue(currAdd)
